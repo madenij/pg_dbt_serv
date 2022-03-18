@@ -1,4 +1,5 @@
 {{ config(materialized='view') }}
 
-select * from {{ source('staging','external_table') }}
+select * 
+from {{ source('staging','external_table') }}
 limit 100
