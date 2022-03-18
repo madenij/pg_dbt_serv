@@ -1,5 +1,5 @@
 {{ config(materialized='view') }}
 
 select *
-from {{ source('staging','external_table') }}
+from {{ source('staging','green_external_table') }}
 limit 100
