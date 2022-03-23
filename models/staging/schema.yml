@@ -3,7 +3,7 @@ version: 2
 sources:
     - name: staging 
       database: dtc-de-339608
-      schema: dbt_data_all
+      schema: taxi_ride_ny
 
       tables:
         - name: green_external_table
