@@ -9,7 +9,7 @@ sources:
         - name: green_external_table
         - name: yellow_external_table
 models:
-  - name: stg_green_external_table
+  - name: stg_yellow_external_table
     description: >
       Trip made by green taxis, also knows as boro taxis and street-hail liveries,
       Green taxis may respond to street hails, but only in the area indicated in green on the map 
@@ -37,19 +37,19 @@ models:
           description: The number of passengers in the vehicle. This is a driver-entered value.
         - name: Trip_distance
           description: The elapsed trip distance in miles reported by the taximeter
-        - name: Pickup_locationid
-          description: locationid where the meter ws engaged.
-          tests:
-            - relationships:
-                to: ref('taxi_zone_lookup')
-                field: location_id
-                severity: warn
-        - name: dropoff_locationid
-          description: locationid where the meter was engaged.
-          tests:
-            - relationships:
-                to: ref('taxi_zone_lookup')
-                field: location_id
+        # - name: pickup_locationid
+        #   description: locationid where the meter was engaged.
+        #   tests:
+        #     - relationships:
+        #         to: ref('taxi_zone_lookup')
+        #         field: locationid
+        #         severity: warn
+        # - name: dropoff_locationid
+        #   description: locationid where the meter was engaged.
+        #   tests:
+        #     - relationships:
+        #         to: ref('taxi_zone_lookup')
+        #         field: locationid
         - name: RatecodeID
           description: >
               The final rate code in effect at the end of the trip.
