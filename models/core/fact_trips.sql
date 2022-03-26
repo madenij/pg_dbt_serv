@@ -1,9 +1,4 @@
-{{ config(materialized='table') }} 
-
--- select *
--- from {{ ref('stg_yellow_external_table') }} as yellow
--- inner join {{ ref('taxi_zone_lookup') }} as taxi
--- on yellow.pickup_locationid = taxi.locationid
+ {{ config(materialized='table') }} 
 
 with green_data as (
     select *,
@@ -33,7 +28,13 @@ select
     trips_unioned.service_type,
     trips_unioned.ratecodeid,
     trips_unioned.pickup_locationid,
+    pickup_zone.borough as pickup_borough,
+    pickup_zone.zone as pickup_zone,
     trips_unioned.dropoff_locationid,
+    dropoff_zone.borough as dropoff_borough,
+    dropoff_zone.zone as dropoff_zone,
+    trips_unioned.pickup_datetime,
+    trips_unioned.dropoff_datetime,
     trips_unioned.store_and_fwd_flag,
     trips_unioned.passenger_count,
     trips_unioned.trip_distance,
@@ -48,7 +49,7 @@ select
     trips_unioned.payment_type_description,
     trips_unioned.congestion_surcharge
 from trips_unioned
-left join dim_zones as pickup_zone
+inner join dim_zones as pickup_zone
 on trips_unioned.pickup_locationid = pickup_zone.locationid
-left join dim_zones as dropoff_zone
+inner join dim_zones as dropoff_zone
 on trips_unioned.dropoff_locationid = dropoff_zone.locationid
