@@ -10,7 +10,7 @@ sources:
 models:
   - name: stg_yellow_external_table
     description: >
-      Trip made by green taxis, also knows as boro taxis and street-hail liveries,
+      Trip made by green taxis also knows as boro taxis and street-hail liveries,
       Green taxis may respond to street hails, but only in the area indicated in green on the map 
       (i.e. above W 110 St/t 96th St in Manhattan and in the boroughs).
       The records were collected and provided to the NYC Taxi and Limousine Commission (TLC) by 
